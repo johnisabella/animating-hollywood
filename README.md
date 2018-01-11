@@ -17,11 +17,11 @@ UI (HTML/CSS)
 
 API calls
 
-Firebase (stores what the user has searched)
-
 JS (populating contents)
 
-Git (branching, merging) 
+Firebase (stores what the user has searched)
+
+Git (make sure people are branching and merging properly) 
 
 Github repo management (issue labelling, issues, project board)
 
