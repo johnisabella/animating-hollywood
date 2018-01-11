@@ -23,5 +23,5 @@ Firebase (stores what the user has searched)
 
 Git (make sure people are branching and merging properly) 
 
-Github repo management (enforce people are using issues and project board properly)
+Github repo management (enforce people to use issues and project board properly)
 
