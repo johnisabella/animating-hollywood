@@ -13,10 +13,15 @@ This app will allow users to enter a movie title into the UI, and it will return
 iTunes, YouTube
 
 ## Task Breakdown:
-UI (HTML/CSS);
+UI (HTML/CSS)
+
 API calls
+
 Firebase (stores what the user has searched)
+
 JS (populating contents)
+
 Git (branching, merging) 
+
 Github repo management (issue labelling, issues, project board)
 
