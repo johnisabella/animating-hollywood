@@ -35,7 +35,7 @@
     // Giphy API request---------
     // Here we grab the text from the user input box
     // Test value for actor for now
-    var actorValue = 'Michael Keaton'
+    var actorValue = 'Michael Keaton';
     var giphyApiKey = 'dc6zaTOxFJmzC';
 
     // Here we construct our URL to be sent to Giphy API
