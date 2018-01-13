@@ -25,24 +25,24 @@ $("#find-movie").on("click", function(event) {
     var actors = response.Actors;
     console.log(actors);
     // $("#actors-view").text(actors);
+
+    //remove user input from the movie-input div class to allow users to enter additional movie titles.
+    $("#movie-input").empty();
+
+    // Looping through the array of actors from the OMDB API to display in the DOM
+    for (var i = 0; i < actors.length; i++) {
+
+      // Then dynamicaly generating buttons for each actor in the array.
+      var a = $("<button>");
+      // Adding a class
+      a.addClass("btn btn-info");
+      a.addClass("btnStyle");
+      // Adding a data-attribute with a value of the actor at index i
+      a.attr("data-name", actors[i]);
+      // Providing the button's text with a value of the actors at index i
+      a.text(actors[i]);
+      // Adding the button to the HTML
+      $("#actors-view").append(a);
+    }
   });
-
-  //remove user input from the movie-input div class to allow users to enter additional movie titles.
-  $("#movie-input").empty();
-
-  // Looping through the array of actors from the OMDB API to display in the DOM
-  for (var i = 0; i < actors.length; i++) {
-
-    // Then dynamicaly generating buttons for each actor in the array.
-    var a = $("<button>");
-    // Adding a class
-    a.addClass("btn btn-info");
-    a.addClass("btnStyle");
-    // Adding a data-attribute with a value of the actor at index i
-    a.attr("data-name", actors[i]);
-    // Providing the button's text with a value of the actors at index i
-    a.text(actors[i]);
-    // Adding the button to the HTML
-    $("#actors-view").append(a);
-  }
 });
