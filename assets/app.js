@@ -24,7 +24,7 @@ $("#find-movie").on("click", function(event) {
       console.log(response);
     var actors = response.Actors;
     console.log(actors);
-    $("#actors-view").text(actors);
+    // $("#actors-view").text(actors);
   });
 
   //remove user input from the movie-input div class to allow users to enter additional movie titles.
