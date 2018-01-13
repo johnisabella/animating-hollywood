@@ -30,3 +30,25 @@
         });
 
     });
+
+
+    // Giphy API request---------
+    // Here we grab the text from the user input box
+    // Test value for actor for now
+    var actorValue = 'Michael Keaton'
+    var giphyApiKey = 'dc6zaTOxFJmzC';
+
+    // Here we construct our URL to be sent to Giphy API
+    var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+    actorValue + "&api_key=" + giphyApiKey + "&limit=9";    
+    
+    // Make the request
+    $.ajax({
+        url: giphyQueryURL,
+        method: "GET"
+      })
+      .done(function(response) {
+          console.log(response);
+        
+       
+      });
