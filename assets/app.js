@@ -22,7 +22,7 @@ $("#find-movie").on("click", function(event) {
   })
   .done(function(response) {
       console.log(response);
-    var actors = response.Actors;
+    var actors = response.Actors.split(', ');
     console.log(actors);
     // $("#actors-view").text(actors);
 
