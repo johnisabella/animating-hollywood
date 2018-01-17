@@ -1,0 +1,39 @@
+body,
+html {
+  min-height: 100%;
+}
+
+
+body {
+  background-image: url(images/TheaterBG.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h3 {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+
+p {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+    border-top-style: dotted;
+    border-right-style: solid;
+    border-bottom-style: dotted;
+    border-left-style: solid;
+    padding: 10px;
+
+}
+
+.gifContainer {
+  float: right;
+  width: 35%;
+  padding: 100px;
+  text-decoration-color: white;
+
+}
+
+.actorContainer {
+  float: left;
+  width: 25%;
+
+}

@@ -21,21 +21,41 @@
 
   <!-- Our own stylesheet -->
   <link rel="stylesheet" href="assets/style.css">
+
 </head>
 
 <body>
-  <form>
-    <!-- <form></form> isn't necessary, but it will enable submit on hitting enter -->
 
-    <input id="movie-input" placeholder="movie name" >
-    <button type="submit" id="find-movie">search</button>
-      <!-- type="submit" isn't necessary, but it'll enable submit on hitting enter, the downside is .preventDefault is required-->
+  <h3><br><br><br><br><br><center>Welcome to Animated Hollywood!</h3>
 
-  </form>
+      <div class="container">
+  <div class="row">
+    <div class="row align-items-start">
+      <div class="actorContainer">
+      <form>
+        <!-- <form></form> isn't necessary, but it will enable submit on hitting enter -->
 
-  <div id="actors-view">
-    
+        <input id="movie-input" placeholder="movie name" >
+        <button type="submit" id="find-movie">search</button>
+          <!-- type="submit" isn't necessary, but it'll enable submit on hitting enter, the downside is .preventDefault is required-->
+
+      </form>
+
+      <div id="actors-view">
+
+      </div>
+      </div>
+      <div class="col-sm">
+        
+        <p>You have entered the premier application to generate GIF images of your favorite actors assoicated with the biggest movies in the film industry.  The instructions are very simple.  Enter your favorite movie name in the left field and click the search button.  Instantly the actors will be generated in which you have the option to choose one which will then produce several GIF images associated with that particular actor. Finally pick your favorite GIF's which will be save for your future entertainment!</p>
+      </div>
+
+      <div class="gifcontainer">
+        <font color="white">GIF's will generate here--</font>
+      </div>
   </div>
+</div>
+
 
 
 </body>
