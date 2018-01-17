@@ -1,0 +1,71 @@
+body,
+html {
+  min-height: 100%;
+}
+
+body {
+  background-image: url(images/TheaterBG.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h3 {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+
+p {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+    border-top-style: dotted;
+    border-right-style: solid;
+    border-bottom-style: dotted;
+    border-left-style: solid;
+    padding: 10px;
+}
+#container {
+ width:1375px;
+ margin:0 auto;
+ background:#fff;
+}
+#header {
+ width:100%;
+ height:60px;
+ border-bottom:1px solid #c7c7c7;
+ background:#333;
+ }
+ #banner {
+  /* background:#666; */
+  text-align: center;
+  height:120px;
+  padding:20px;
+  margin: 120px;
+  clear: both;
+ }
+ #left_col {
+  float:left;
+  width:30%;
+  /* padding:10px; */
+  height:200px;
+  border:5px solid darkred;
+  color:#FFF;
+  margin: 5px;
+
+ }
+ #right_col {
+  float:left;
+  width:60%;
+  /* padding:10px; */
+  height:200px;
+  border:5px solid darkred;
+  color:#FFF;
+  margin: 5px;
+
+ }
+ #footer {
+   text-align: center;
+   height:120px;
+   padding:20px;
+   margin: 120px;
+   clear: both;
+   color: white;
+
+ }
