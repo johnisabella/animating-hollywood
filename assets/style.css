@@ -58,8 +58,15 @@ p {
   border:5px solid darkred;
   color:#FFF;
   margin: 5px;
+  overflow: scroll;
 
  }
+
+ div#gif-display-area img {
+  width: 300px;
+}
+
+
  #footer {
    text-align: center;
    height:120px;
