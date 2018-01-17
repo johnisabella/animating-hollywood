@@ -39,7 +39,7 @@
       });
 
 
-     
+
   });
 
 
@@ -65,6 +65,7 @@
         })
         .done(function(response) {
           console.log(response);
+          populateGifs(response);
         });
       });
 
@@ -72,11 +73,18 @@
 
     giphyCall();
 
+function populateGifs(jsonFromGiphy) {
+    $('#gif-display-area').empty(); //first empty the current gifs on display
+    for (var i of jsonFromGiphy.data) {
+      var gifUrl = i.images.fixed_height.webp; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
+      var imgDiv = `<img src=${gifUrl}>`;
+      $('#gif-display-area').append(imgDiv);
+    }
+  }
 
 
 
-     
 
 
-        
+
 
