@@ -5,19 +5,26 @@
   <meta charset="utf-8">
   <title>Animating Hollywood</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap scripts: jQuery first, then Popper.js, then Bootstrap -->
-  <script defer
-   src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script defer
-   src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-  <script defer
-   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-  <!-- Our own script -->
-  <script defer src="assets/app.js"></script>
+  <!-- Scripts Section -->
+    <!-- "defer" means start downloading all scripts asynchronously on multi threads, but run them after the page finishes loading in the order listed. It's the same as putting scripts at the bottom, but faster -->
+
+    <!-- jQuery first -->
+    <script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Our own script -->
+    <script defer src="assets/app.js"></script>
+
+    <!-- Bootstrap scripts: load jQuery first (if haven't already), then Popper.js, then Bootstrap.js -->
+      <!-- Popper.js is required for bootstrap dropdowns, tooltips, and popovers. When project finishes, try removing it and see what happens -->
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+
+      Bootstrap.js is required for some Bootstrap animations, When project finishes, try removing it and see what happens
+      <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <!-- We may end up not using Bootstrap at all, if so, remember to remove it-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 
   <!-- Our own stylesheet -->
   <link rel="stylesheet" href="assets/style.css">
@@ -26,55 +33,49 @@
 
 <body>
 
-
-<!-- Header content -->
+  <!-- Header content -->
   <div id="banner">
-  <head>
-    <h3>Welcome to Animated Hollywood!</h3>
-    <p>You have entered the premier application to generate GIF images of your favorite actors assoicated with the biggest movies in the film industry.  The instructions are very simple.  Enter your favorite movie name in the left field and click the search button.  Instantly the actors will be generated in which you have the option to choose one which will then produce several GIF images associated with that particular actor. Finally pick your favorite GIF's which will be save for your future entertainment!</p>
-  </head>
-</div>
 
-<!-- Active Content -->
-<div id="left_col">
-      <!-- <div class="card" style="width: 18rem;">
-        <div class="card-body"> -->
-          <h5>Enter Name of Movie Here</h5>
-          <!-- <div class="actorContainer"> -->
-          <form>
-            <!-- <form></form> isn't necessary, but it will enable submit on hitting enter -->
-            <input id="movie-input" placeholder="movie name" >
-            <button type="submit" id="find-movie">search</button>
-              <!-- type="submit" isn't necessary, but it'll enable submit on hitting enter, the downside is .preventDefault is required-->
-          </form>
-
-
-  <div id="actors-view">
-
-  </div>
- 
-</div>
-      <div id="right_col">
-
-        <h5>GIF's will generate here</h5>
-        <div id="gif-display-area">
-
-         
-            </div>
-
-      </div>
+    <head>
+      <h3>Welcome to Animated Hollywood!</h3>
+      <p>You have entered the premier application to generate GIF images of your favorite actors assoicated with the biggest movies in the film industry. The instructions are very simple. Enter your favorite movie name in the left field and click the search button. Instantly the actors will be generated in which you have the option to choose one which will then produce several GIF images associated with that particular actor. Finally pick your favorite GIF's which will be save for your future entertainment!</p>
+    </head>
   </div>
 
+  <!-- Active Content -->
+  <div id="left_col">
 
-<!-- Footer content -->
-<div id="footer">
-  <footer>
-<p>Authors: Henry Mesias, Zhi Yin, John Isabella and Chris Chlumsky</p>
-</footer>
-</div>
-</div>
+    <h5>Enter Name of Movie Here</h5>
+    <!-- <div class="actorContainer"> -->
 
+    <form><!-- <form></form> isn't mandatory, but it enables submit on hitting enter -->
+      <input id="movie-input" placeholder="movie name">
+      <button type="submit" id="find-movie">search</button><!-- type="submit" isn't mandatory, but it'll enable submit on hitting enter, the downside is .preventDefault is required-->
+    </form>
 
+    <div id="actors-view">
+
+    </div>
+
+  </div>
+
+  <div id="right_col">
+
+    <h5>GIF's will generate here</h5>
+    <div id="gif-display-area">
+
+    </div>
+
+  </div>
+  </div>
+
+  <!-- Footer content -->
+  <div id="footer">
+    <footer>
+      <p>Authors: Henry Mesias, Zhi Yin, John Isabella and Chris Chlumsky</p>
+    </footer>
+  </div>
+  </div>
 
 </body>
 
