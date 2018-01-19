@@ -10,7 +10,7 @@
     min-height: 100vh;
     flex-direction: column;
   }
-  
+
   .site-content {
     flex: 1;
   }
@@ -137,7 +137,7 @@
 
   #gif-display-area img {
     margin:5px;
-    
+
   }
 
   /* Utility */
@@ -154,4 +154,43 @@
     background-color:#36454f;
   }
 
+/*Styling for team page */
 
+  #all-stars-pics {
+    padding-top: 0;
+  }
+
+  #all-stars img {
+    height: 250px;
+    width: 250px;
+    display: block;
+  }
+
+  #all-stars-container {
+    position: relative;
+    float: left;
+    margin: 10px;
+    }
+
+  #all-stars-text {
+    position: absolute;
+    background-color: gold;
+    font-family: 'Nunito', sans-serif;
+    color: #ffffff;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 5px;
+    bottom: 20px;
+    left: 0;
+    }
+
+.team-pics {
+  height:100%;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
