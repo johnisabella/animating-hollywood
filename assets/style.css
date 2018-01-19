@@ -64,6 +64,7 @@
     color:black;
     padding:20px;
     margin-top:10px;
+    margin-bottom:10px;
     height:85vh;
     border-radius:5px;
 
@@ -101,8 +102,43 @@
   **************************************
   */
 
+  #movie-title {
+    margin:0 auto;
+    text-align: center;
+  }
+
+  #movie-title h2 {
+    text-transform: uppercase;
+    font-size: 3em;
+  }
+  #actors-view {
+    margin:0 auto;
+    display:flex;
+    flex-flow:column;
+  }
+
+  #actors-view button {
+    margin:10px 0;
+  }
+
   .display-content h2 {
     margin:0 auto;
+  }
+
+  .display-gifs {
+    margin:0 auto;
+  }
+
+  #gif-display-area {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+  }
+
+  #gif-display-area img {
+    width:200px;
+    margin:5px;
+    
   }
 
   /* Utility */

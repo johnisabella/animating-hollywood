@@ -22,6 +22,16 @@
         // $("#actors-view").text(actors);
         //remove user input from the movie-input div class to allow users to enter additional movie titles.
         $("#movie-input").empty();
+        
+
+        // Create movie title to be display
+        var intro = $("<h3>Starring</h3>")
+        var movieTitle = '<h2>' + movie + '</h2>';
+        $("#movie-title").append(movieTitle, intro);
+       
+        // change height of main content container to grow
+        $(".main-content").css("height","auto");
+        
         // Looping through the array of actors from the OMDB API to display in the DOM
         for (var i = 0; i < actors.length; i++) {
           // Then dynamicaly generating buttons for each actor in the array.
@@ -48,6 +58,7 @@
       $('#actors-view').on('click', '.btn', function(e) {
         e.preventDefault();
         console.log('clicked');
+        
         // get data value for actors name
         var actorValue = $(this).data("name");
       // Giphy API request---------
