@@ -1,10 +1,26 @@
   body {
   font-family: 'PT Sans Narrow', sans-serif;
+  background-color:black;
+  color:ghostwhite;
   /* font-family: 'Nunito', sans-serif; */
   }
 
+  .site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .site-content {
+    flex: 1;
+  }
+
+  /* Header Styles
+  **************************************
+  */
+
   header {
-    background-color:black;
+    background-color:#36454f;
     color:ghostwhite;
     padding:10px 0;
   }
@@ -39,6 +55,37 @@
     color:gold;;
     text-decoration: none;
   }
+
+  /* Main content Container Styles
+  **************************************
+  */
+  .main-content {
+    background-color:whitesmoke;
+    color:black;
+    padding:20px;
+    margin-top:10px;
+    height:85vh;
+    border-radius:5px;
+
+  }
+
+ 
+/* Title Styles
+  **************************************
+  */
+  .title {
+    margin:0 auto;
+  }
+  .title h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 4.5rem;
+    margin:0 auto;
+    text-transform: uppercase;
+    color:gold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,.8);
+  }
+
+
 
   /* Utility */
   .vert-center {
