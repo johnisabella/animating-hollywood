@@ -69,7 +69,7 @@
 
   }
 
- 
+
 /* Title Styles
   **************************************
   */
@@ -85,7 +85,24 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,.8);
   }
 
+  li.list-items {
+    padding: 5px 15px;
+}
 
+  ul.instructions-list {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+/* displayed content styles
+  **************************************
+  */
+
+  .display-content h2 {
+    margin:0 auto;
+  }
 
   /* Utility */
   .vert-center {
@@ -96,79 +113,9 @@
   }
 
 
-
-/* body,
-html {
-  min-height: 100%;
-}
-
-body {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-h3 {
-    font-family: "Comic Sans MS", cursive, sans-serif;
+  footer {
+    padding-bottom:1px;
+    background-color:#36454f;
   }
 
-p {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-    border-top-style: dotted;
-    border-right-style: solid;
-    border-bottom-style: dotted;
-    border-left-style: solid;
-    padding: 10px;
-}
-#container {
- width:1375px;
- margin:0 auto;
- background:#fff;
-}
-#header {
- width:100%;
- height:60px;
- border-bottom:1px solid #c7c7c7;
- background:#333;
- }
- #banner {
-  background-image: url(images/TheaterBG.jpg);
-  text-align: center;
-  height:120px;
-  padding:20px;
-  margin: 120px;
-  clear: both;
- }
- #left_col {
-  float:left;
-  width:30%;
-  height:200px;
-  border:5px solid darkred;
-  color:#FFF;
-  margin: 5px;
 
- }
- #right_col {
-  float:left;
-  width:60%;
-  height:200px;
-  border:5px solid darkred;
-  color:#FFF;
-  margin: 5px;
-  overflow: scroll;
-
- }
-
- div#gif-display-area img {
-  width: 300px;
-}
-
-
- #footer {
-   text-align: center;
-   height:120px;
-   padding:20px;
-   margin: 120px;
-   clear: both;
-   color: white;
-
- } */
