@@ -13,16 +13,15 @@ $("#find-movie").on("click", function(event) { //when "Search" is clicked, do 4 
 });
 
 function displayActorList(jsonFromOMDB) {
+  //display movie title and movie year
   var intro = $("<h3>Starring:</h3>");
   var movieTitle = `<h2>${jsonFromOMDB.Title}, ${jsonFromOMDB.Year}</h2>`;
   $("#movie-title").append(movieTitle, intro);
+  //display actors
   var actors = jsonFromOMDB.Actors.split(', ');
   for (var i = 0; i < actors.length; i++) {
     // Then dynamicaly generating buttons for each actor in the array.
-    var a = $("<button>");
-    // Adding a class
-    a.addClass("btn btn-info");
-    a.addClass("btnStyle");
+    var a = $("<p>");
     // Adding a data-attribute with a value of the actor at index i
     a.attr("data-name", actors[i]);
     // Providing the button's text with a value of the actors at index i
