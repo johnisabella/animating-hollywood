@@ -5,69 +5,79 @@
   <meta charset="utf-8">
   <title>Animating Hollywood</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Scripts Section -->
-    <!-- "defer" means start downloading all scripts asynchronously on multi threads, but run them after the page finishes loading in the order listed. It's the same as putting scripts at the bottom, but faster -->
-
     <!-- jQuery first -->
-    <script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+  <script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- Our own script -->
-    <script defer src="assets/app.js"></script>
-
-    <!-- Bootstrap scripts: load jQuery first (if haven't already), then Popper.js, then Bootstrap.js -->
-      <!-- Popper.js is required for bootstrap dropdowns, tooltips, and popovers. When project finishes, try removing it and see what happens -->
-      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-
-      Bootstrap.js is required for some Bootstrap animations, When project finishes, try removing it and see what happens
-      <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-
-  <!-- Bootstrap CSS -->
-  <!-- We may end up not using Bootstrap at all, if so, remember to remove it-->
+  <script defer src="assets/app.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+  <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-
-  <!-- Our own stylesheet -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito|PT+Sans+Narrow" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
-
 </head>
 
-<body>
-
-  <!-- Header content -->
-  <div id="banner">
-
-    <head>
-      <h3>Welcome to Animated Hollywood!</h3>
-      <p>You have entered the premier application to generate GIF images of your favorite actors assoicated with the biggest movies in the film industry. The instructions are very simple. Enter your favorite movie name in the left field and click the search button. Instantly the actors will be generated in which you have the option to choose one which will then produce several GIF images associated with that particular actor. Finally pick your favorite GIF's which will be save for your future entertainment!</p>
-    </head>
-  </div>
-
-  <!-- Active Content -->
-  <div id="left_col">
-
-    <h5>Enter Name of Movie Here</h5>
-    <!-- <div class="actorContainer"> -->
-
-    <form><!-- <form></form> isn't mandatory, but it enables submit on hitting enter -->
-      <input id="movie-input" placeholder="movie name">
-      <button type="submit" id="find-movie">search</button><!-- type="submit" isn't mandatory, but it'll enable submit on hitting enter, the downside is .preventDefault is required-->
-    </form>
-
-    <div id="actors-view">
+<body class="site">
+    <div class="site-content">
+  <header>
+    <div class="primary-nav">
+      <div class="row container">
+        <div class="col-lg-6 col-md-12 col-sm-12 search">
+            <form class="form-inline">
+              <input id="movie-input" class="form-control" placeholder="movie name">
+              <button class="btn btn-primary" type="submit" id="find-movie">search</button><!-- type="submit" isn't mandatory, but it'll enable submit on hitting enter, the downside is .preventDefault is required-->
+          </form>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 nav">
+          <ul class="nav-links">
+            <li class="nav-item"><a href="/local-favorites.html">Local Favorites</a></li>
+            <li class="nav-item"><a href="/global-favorites.html">Global Favorites</a></li>
+            <li class="nav-item"><a href="/team.html">Team</a></li>
+          </ul>
+          </ul>
+        </div>
+      </div>
 
     </div>
+  </header>
+  <section class="container main-content">
+    <section class="title row">
+      <h1>Animating HollyWood</h1>
+    </section>
+    <section class="description row">
+      <ul class="instructions-list">
+        <li class="list-items">Search for your favorite movie</li>
+        <li class="list-items">Choose an actor</li>
+        <li class="list-items">Get a GIF</li>
+        <li class="list-items">Store your favorites</li>
+        <li class="list-items">view other community favorites</li>
+      </ul>
+    </section>
+    <section class="display-content">
+      <div class="display-title row">
+        <h2>Team Canary Prodoctions Presents:</h2>
+      </div>
+      <div class="dispay-movie-title row">
+          <div id="movie-title">
+            
+          </div>
+      </div>
+      <div class="display-actor-buttons row">
+        <div id="actors-view">
+          
+        </div>
+      </div>
+      <div class="display-gifs row">
+        <div id="gif-display-area">
+    
+        </div>
+      </div>
+    </section>
 
-  </div>
-
-  <div id="right_col">
-
-    <h5>GIF's will generate here</h5>
-    <div id="gif-display-area">
-
-    </div>
-
-  </div>
-  </div>
+      </div>
+      <!-- end site content -->
+    </section>
+<!-- end main content -->
+  
 
   <!-- Footer content -->
   <div id="footer">
@@ -76,7 +86,7 @@
     </footer>
   </div>
   </div>
-
+</div>
 </body>
 
 </html>

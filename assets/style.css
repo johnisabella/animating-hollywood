@@ -1,78 +1,157 @@
-body,
-html {
-  min-height: 100%;
-}
-
-body {
-  background-image: url(images/TheaterBG.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-h3 {
-    font-family: "Comic Sans MS", cursive, sans-serif;
+  body {
+  font-family: 'PT Sans Narrow', sans-serif;
+  background-color:black;
+  color:ghostwhite;
+  /* font-family: 'Nunito', sans-serif; */
   }
 
-p {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-    border-top-style: dotted;
-    border-right-style: solid;
-    border-bottom-style: dotted;
-    border-left-style: solid;
-    padding: 10px;
+  .site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .site-content {
+    flex: 1;
+  }
+
+  /* Header Styles
+  **************************************
+  */
+
+  header {
+    background-color:#36454f;
+    color:ghostwhite;
+    padding:10px 0;
+  }
+
+  input#movie-input {
+    margin-right:5px;
+  }
+
+  .primary-nav .row {
+    margin:0 auto;
+  }
+
+  .nav {
+    justify-content: flex-end;
+  }
+
+  .nav-links {
+    display:flex;
+    flex-wrap:wrap;
+    list-style-type: none;
+    margin:10px 0 5px 0;
+  }
+  .nav-item {
+    padding:0 15px;
+  }
+
+  .nav-item a {
+    color:ghostwhite;
+    transition: all .3s;
+  }
+  .nav-item a:hover {
+    color:gold;;
+    text-decoration: none;
+  }
+
+  /* Main content Container Styles
+  **************************************
+  */
+  .main-content {
+    background-color:whitesmoke;
+    color:black;
+    padding:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+    height:85vh;
+    border-radius:5px;
+
+  }
+
+
+/* Title Styles
+  **************************************
+  */
+  .title {
+    margin:0 auto;
+  }
+  .title h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 4.5rem;
+    margin:0 auto;
+    text-transform: uppercase;
+    color:gold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,.8);
+  }
+
+  li.list-items {
+    padding: 5px 15px;
 }
-#container {
- width:1375px;
- margin:0 auto;
- background:#fff;
-}
-#header {
- width:100%;
- height:60px;
- border-bottom:1px solid #c7c7c7;
- background:#333;
- }
- #banner {
-  /* background:#666; */
-  text-align: center;
-  height:120px;
-  padding:20px;
-  margin: 120px;
-  clear: both;
- }
- #left_col {
-  float:left;
-  width:30%;
-  /* padding:10px; */
-  height:200px;
-  border:5px solid darkred;
-  color:#FFF;
-  margin: 5px;
 
- }
- #right_col {
-  float:left;
-  width:60%;
-  /* padding:10px; */
-  height:200px;
-  border:5px solid darkred;
-  color:#FFF;
-  margin: 5px;
-  overflow: scroll;
-
- }
-
- div#gif-display-area img {
-  width: 300px;
+  ul.instructions-list {
+    display: flex;
+    flex-wrap:wrap;
+    list-style-type: none;
+    justify-content: center;;
+    margin: 0 auto;
 }
 
+/* displayed content styles
+  **************************************
+  */
 
- #footer {
-   text-align: center;
-   height:120px;
-   padding:20px;
-   margin: 120px;
-   clear: both;
-   color: white;
+  #movie-title {
+    margin:0 auto;
+    text-align: center;
+  }
 
- }
+  #movie-title h2 {
+    text-transform: uppercase;
+    font-size: 3em;
+  }
+  #actors-view {
+    margin:0 auto;
+    display:flex;
+    flex-flow:column;
+  }
+
+  #actors-view button {
+    margin:10px 0;
+  }
+
+  .display-content h2 {
+    margin:0 auto;
+  }
+
+  .display-gifs {
+    margin:0 auto;
+  }
+
+  #gif-display-area {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+  }
+
+  #gif-display-area img {
+    margin:5px;
+    
+  }
+
+  /* Utility */
+  .vert-center {
+    position: relative;
+    top: 50%;
+    -ms-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+  }
+
+
+  footer {
+    padding-bottom:1px;
+    background-color:#36454f;
+  }
+
+
