@@ -1,10 +1,61 @@
-body,
+  body {
+  font-family: 'PT Sans Narrow', sans-serif;
+  /* font-family: 'Nunito', sans-serif; */
+  }
+
+  header {
+    background-color:black;
+    color:ghostwhite;
+    padding:10px 0;
+  }
+
+  input#movie-input {
+    margin-right:5px;
+  }
+
+  .primary-nav .row {
+    margin:0 auto;
+  }
+
+  .nav {
+    justify-content: flex-end;
+  }
+
+  .nav-links {
+    display:flex;
+    flex-wrap:wrap;
+    list-style-type: none;
+    margin:10px 0 5px 0;
+  }
+  .nav-item {
+    padding:0 15px;
+  }
+
+  .nav-item a {
+    color:ghostwhite;
+    transition: all .3s;
+  }
+  .nav-item a:hover {
+    color:gold;;
+    text-decoration: none;
+  }
+
+  /* Utility */
+  .vert-center {
+    position: relative;
+    top: 50%;
+    -ms-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+  }
+
+
+
+/* body,
 html {
   min-height: 100%;
 }
 
 body {
-  background-image: url(images/TheaterBG.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -33,7 +84,7 @@ p {
  background:#333;
  }
  #banner {
-  /* background:#666; */
+  background-image: url(images/TheaterBG.jpg);
   text-align: center;
   height:120px;
   padding:20px;
@@ -43,7 +94,6 @@ p {
  #left_col {
   float:left;
   width:30%;
-  /* padding:10px; */
   height:200px;
   border:5px solid darkred;
   color:#FFF;
@@ -53,7 +103,6 @@ p {
  #right_col {
   float:left;
   width:60%;
-  /* padding:10px; */
   height:200px;
   border:5px solid darkred;
   color:#FFF;
@@ -75,4 +124,4 @@ p {
    clear: both;
    color: white;
 
- }
+ } */
