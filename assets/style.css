@@ -188,12 +188,17 @@
     }
 
 .team-pics {
-  height:100%;
+  height:auto;
   width:100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+/* revisit this style below */
+div#all-stars {
+  display: flex;
+}
+
 /*Zhi's stuff to make the heart work*/
 #gif-display-area img {
   position: relative;
