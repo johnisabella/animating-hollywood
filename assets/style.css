@@ -86,17 +86,12 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,.8);
   }
 
-  li.list-items {
-    padding: 5px 15px;
-}
+  .description p {
+    margin:0 auto;
+    padding:5px 0;
+    font-size: 18px;
+  }
 
-  ul.instructions-list {
-    display: flex;
-    flex-wrap:wrap;
-    list-style-type: none;
-    justify-content: center;;
-    margin: 0 auto;
-}
 
 /* displayed content styles
   **************************************
@@ -114,11 +109,12 @@
   #actors-view {
     margin:0 auto;
     display:flex;
-    flex-flow:column;
+    flex-flow:row;
+    flex-wrap: wrap;
   }
 
-  #actors-view button {
-    margin:10px 0;
+  #actors-view .btn-info {
+    margin:10px;
   }
 
   .display-content h2 {
