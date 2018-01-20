@@ -24,7 +24,7 @@
         <div class="col-lg-6 col-md-12 col-sm-12 search">
             <form class="form-inline">
               <input id="movie-input" class="form-control" placeholder="movie name">
-              <button class="btn btn-primary" type="submit" id="find-movie">search</button><!-- type="submit" isn't mandatory, but it'll enable submit on hitting enter, the downside is .preventDefault is required-->
+              <button class="btn btn-primary" type="submit" id="find-movie">search</button>
           </form>
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12 nav">
@@ -41,22 +41,13 @@
   </header>
   <section class="container main-content">
     <section class="title row">
+      <h2>Team Canary Productions Presents:</h2>
       <h1>Animating HollyWood</h1>
     </section>
     <section class="description row">
-      <p>Search for your favorite movie, choose an actor, get a gif, store your favorites.</p>
-      <!-- <ul class="instructions-list">
-        <li class="list-items">Search for your favorite movie</li>
-        <li class="list-items">Choose an actor</li>
-        <li class="list-items">Get a GIF</li>
-        <li class="list-items">Store your favorites</li>
-        <li class="list-items">view other community favorites</li>
-      </ul> -->
+      <p><span class="step-one show">Search for a movie</span>, <span class="step-two">choose an actor, get a gif</span>, <span class="step-three">store your favorites.</span></p>
     </section>
     <section class="display-content">
-      <div class="display-title row">
-        <h2>Team Canary Productions Presents:</h2>
-      </div>
       <div class="dispay-movie-title row">
           <div id="movie-title">
 
