@@ -1,101 +1,97 @@
-   // This .on("click") function will trigger the AJAX Call
-   $("#find-movie").on("click", function(event) {
-    // event.preventDefault() can be used to prevent an event's default behavior.
-    // Here, it prevents the submit button from trying to submit a form when clicked
-    event.preventDefault();
-    // Here we grab the text from the user input box
-    var movie = $("#movie-input").val().trim();
-    var apiKey = 'ebd97e72';
-    // Here we construct our URL to be sent to the OMDB API
-    // Long plot query URL
-    var queryURL = 'https://www.omdbapi.com/?apikey=' + apiKey + '&t=' + movie;
-    // Short plot query- delete later?
-    // var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=" + apiKey;
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-      .done(function(response) {
-        console.log(response);
-        var actors = response.Actors.split(', ');
-        console.log(actors);
-        // $("#actors-view").text(actors);
-        //remove user input from the movie-input div class to allow users to enter additional movie titles.
-        $("#movie-input").empty();
-        
+//settings:
+var omdbApiKey = 'ebd97e72';
+var giphyApiKey = 'dc6zaTOxFJmzC';
+var giphyRating = 'g';
+var giphyDisplayCount = 9;
 
-        // Create movie title to be display
-        var intro = $("<h3>Starring</h3>")
-        var movieTitle = '<h2>' + movie + '</h2>';
-        $("#movie-title").append(movieTitle, intro);
-       
-        // change height of main content container to grow
-        $(".main-content").css("height","auto");
-        
-        // Looping through the array of actors from the OMDB API to display in the DOM
-        for (var i = 0; i < actors.length; i++) {
-          // Then dynamicaly generating buttons for each actor in the array.
-          var a = $("<button>");
-          // Adding a class
-          a.addClass("btn btn-info");
-          a.addClass("btnStyle");
-          // Adding a data-attribute with a value of the actor at index i
-          a.attr("data-name", actors[i]);
-          // Providing the button's text with a value of the actors at index i
-          a.text(actors[i]);
-          // Adding the button to the HTML
-          $("#actors-view").append(a);
-        }
-      });
+//logic:
+$("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
+$('#actors-view').on('click', '.btn', giphyCall); //make the giphy call when user clicks an actor name
+$('#gif-display-area').on('click', '.heart', toggleFavorite); //toggle favorite on and off when user clicks the heart
+/*
+no functions above↑
+nothing but functions below↓
+*/
 
-
-
+function omdbCall(event) {
+  event.preventDefault();
+  clearPreviousSearch(); //clear search box, clear movie title and actor list from previous search
+  var movie = $("#movie-input").val().trim(); //grab user input from search box
+  var queryURL = `https://www.omdbapi.com/?apikey=${omdbApiKey}&t=${movie}&rating=giphyRating`;
+  $.ajax(queryURL).done(function(response) {
+    displayActorList(response); //show new movie title and actor list
   });
+}
 
+function giphyCall() {
+  // get data value for actors name
+  var actorValue = $(this).data("name");
+  var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + actorValue + "&api_key=" + giphyApiKey + "&limit=" + giphyDisplayCount;
+  $.ajax(giphyQueryURL).done(function(response) {
+    populateGifs(response);
+  });
+}
 
+function displayActorList(jsonFromOMDB) { //this function puts up the movie title and actor list
+  //display movie title and movie year
+  var intro = $("<h3>Starring:</h3>");
+  var movieTitle = `<h2>${jsonFromOMDB.Title}, ${jsonFromOMDB.Year}</h2>`;
+  $("#movie-title").append(movieTitle, intro);
+   // change height of main content container to grow
+   $(".main-content").css("height","auto");
+  //display actors
+  var actors = jsonFromOMDB.Actors.split(', ');
+  for (var i = 0; i < actors.length; i++) {
+    // Then dynamicaly generating buttons for each actor in the array.
+    var a = $("<p>");
+    // Adding a class
+    a.addClass("btn btn-info");
+    a.addClass("btnStyle");
+    // Adding a data-attribute with a value of the actor at index i
+    a.attr("data-name", actors[i]);
+    // Providing the button's text with a value of the actors at index i
+    a.text(actors[i]);
+    // Adding the button to the HTML
+    $("#actors-view").append(a);
+  }
+}
 
-    function giphyCall() {
-      $('#actors-view').on('click', '.btn', function(e) {
-        e.preventDefault();
-        console.log('clicked');
-        
-        // get data value for actors name
-        var actorValue = $(this).data("name");
-      // Giphy API request---------
-      // Here we grab the text from the user input box
+function clearPreviousSearch() { //this function clears the search box, and clears movie title and actor list from previous search
+  $("#movie-input").empty();
+  $('#movie-title').empty();
+  $('#actors-view').empty();
+}
 
-      console.log(actorValue);
-      var giphyApiKey = 'dc6zaTOxFJmzC';
-      // Here we construct our URL to be sent to Giphy API
-      var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        actorValue + "&api_key=" + giphyApiKey + "&limit=9";
-      // Make the request
-      $.ajax({
-          url: giphyQueryURL,
-          method: "GET"
-        })
-        .done(function(response) {
-          console.log(response);
-          populateGifs(response);
-        });
-      });
+function populateGifs(jsonFromGiphy) { //this function puts up gifs
+  $('#gif-display-area').empty(); //first empty the current gifs on display
+  for (var i of jsonFromGiphy.data) {
+    var gifUrl = i.images.fixed_height.webp; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
+    var gifDiv = $('<div>');
+    gifDiv.append(`<img src=${gifUrl}>`);
+    gifDiv.append(`<span data-url=${gifUrl} class="heart">❤</span>`); //attach a heart with every img
+    $('#gif-display-area').append(gifDiv);
+  }
+}
 
-    }
+function toggleFavorite() {
+  $(this).toggleClass('favorite');
+  if ($(this).hasClass('favorite')) {
+    addToLocalStorage($(this).attr('data-url'));
+  } else {
+    removeFromLocalStorage($(this).attr('data-url'));
+  }
+}
 
-    giphyCall();
+function addToLocalStorage(url) {
+  var keyName = url.slice(35,40); //slice a small part of the file name to be the key name
+  localStorage.setItem(keyName, url);
+}
 
-function populateGifs(jsonFromGiphy) {
-    $('#gif-display-area').empty(); //first empty the current gifs on display
-    for (var i of jsonFromGiphy.data) {
-      var gifUrl = i.images.fixed_height.webp; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
-      var imgDiv = `<img src=${gifUrl}>`;
-      $('#gif-display-area').append(imgDiv);
+function removeFromLocalStorage(url) {
+  for (var i = 0; i<localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (localStorage[key] == url) {
+      localStorage.removeItem(key);
     }
   }
-
-
-
-
-
-
-
+}
