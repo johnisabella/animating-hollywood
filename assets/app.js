@@ -3,6 +3,7 @@ var omdbApiKey = 'ebd97e72';
 var giphyApiKey = 'dc6zaTOxFJmzC';
 var giphyRating = 'g';
 var giphyDisplayCount = 9;
+var movieValue = "";
 
 //logic:
 $("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
@@ -26,7 +27,7 @@ function omdbCall(event) {
 function giphyCall() {
   // get data value for actors name
   var actorValue = $(this).data("name");
-  var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + actorValue + "&api_key=" + giphyApiKey + "&limit=" + giphyDisplayCount;
+  var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + actorValue + " " + movieValue + "&api_key=" + giphyApiKey + "&limit=" + giphyDisplayCount;
   $.ajax(giphyQueryURL).done(function(response) {
     populateGifs(response);
   });
@@ -36,6 +37,7 @@ function displayActorList(jsonFromOMDB) { //this function puts up the movie titl
   //display movie title and movie year
   var intro = $("<h3>Starring:</h3>");
   var movieTitle = `<h2>${jsonFromOMDB.Title}, ${jsonFromOMDB.Year}</h2>`;
+  movieValue = jsonFromOMDB.Title
   $("#movie-title").append(movieTitle, intro);
    // change height of main content container to grow
    $(".main-content").css("height","auto");
@@ -60,6 +62,7 @@ function clearPreviousSearch() { //this function clears the search box, and clea
   $("#movie-input").empty();
   $('#movie-title').empty();
   $('#actors-view').empty();
+  $('#gif-display-area').empty(); //first empty the current gifs on display
 }
 
 function populateGifs(jsonFromGiphy) { //this function puts up gifs
