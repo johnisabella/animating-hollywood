@@ -156,6 +156,10 @@
 
 /*Styling for team page */
 
+  .main-content.child-content {
+    height: auto;
+  }
+
   #all-stars-pics {
     padding-top: 0;
   }
