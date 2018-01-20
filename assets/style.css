@@ -10,7 +10,7 @@
     min-height: 100vh;
     flex-direction: column;
   }
-  
+
   .site-content {
     flex: 1;
   }
@@ -133,7 +133,7 @@
 
   #gif-display-area img {
     margin:5px;
-    
+
   }
 
   /* Utility */
@@ -151,3 +151,13 @@
   }
 
 
+/*Zhi's stuff to make the heart work*/
+#gif-display-area img {
+  position: relative;
+}
+.heart {
+  color:white;
+  position: relative;
+    bottom: -86px;
+    right:30px;
+}
