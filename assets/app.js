@@ -28,6 +28,7 @@ function giphyCall() {
   // get data value for actors name
   var actorName = $(this).data("name");
   var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + actorName + " " + movieTitle + "&api_key=" + giphyApiKey + "&limit=" + giphyDisplayCount;
+  console.log(giphyQueryURL);
   $.ajax(giphyQueryURL).done(function(response) {
     populateGifs(response);
   });
@@ -71,17 +72,28 @@ function populateGifs(jsonFromGiphy) { //this function puts up gifs
   $('#gif-display-area').empty(); //first empty the current gifs on display
   for (var i of jsonFromGiphy.data) {
     var gifUrl = i.images.fixed_height.webp; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
-    var gifDiv = $('<div>');
+    var gifDiv = $('<div>');  //this div contains one gif and one heart
     gifDiv.append(`<img src=${gifUrl}>`);
-    var heart = $('<span>').append('❤').attr({'data-url': gifUrl, 'class': 'heart'});
-    if (isFavorite(url)) {}
-
+    // construct the heart, it'll be something like <span class="heart favorite" data-url="xxxxx">❤</span>
+    var heart = $('<span>').append('❤').attr({'class': 'heart', 'data-url': gifUrl});
+    //check if it's already a favorite, if yes make it red
+    if (isFavorite(gifUrl)) {
+      heart.toggleClass('favorite', true);
+    }
     gifDiv.append(heart);
-    // gifDiv.append(`<span data-url=${gifUrl} class="heart">❤</span>`); //attach a heart with every img
     $('#gif-display-area').append(gifDiv);
   }
 }
 
+function isFavorite(url) { //this function checks whether a url is already stored in lockStorage
+    for (var i = 0; i<localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (localStorage[key] == url) {
+        return true;
+      }
+    }
+    return false;
+  }
 function toggleFavorite() {
   $(this).toggleClass('favorite');
   if ($(this).hasClass('favorite')) {
