@@ -76,8 +76,22 @@ function populateGifs(jsonFromGiphy) { //this function puts up gifs
 function toggleFavorite() {
   $(this).toggleClass('favorite');
   if ($(this).hasClass('favorite')) {
-    console.log('on');
+    addToLocalStorage($(this).attr('data-url'));
   } else {
-    console.log('off');
+    removeFromLocalStorage($(this).attr('data-url'));
+  }
+}
+
+function addToLocalStorage(url) {
+  var keyName = url.slice(35,40); //slice a small part of the file name to be the key name
+  localStorage.setItem(keyName, url);
+}
+
+function removeFromLocalStorage(url) {
+  for (var i = 0; i<localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (localStorage[key] == url) {
+      localStorage.removeItem(key);
+    }
   }
 }
