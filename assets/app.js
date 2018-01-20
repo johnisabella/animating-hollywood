@@ -13,7 +13,6 @@ $('#gif-display-area').on('click', '.heart', toggleFavorite); //toggle favorite 
 no functions above↑
 nothing but functions below↓
 */
-
 function omdbCall(event) {
   event.preventDefault();
   clearPreviousSearch(); //clear search box, clear movie title and actor list from previous search
@@ -41,6 +40,9 @@ function displayActorList(jsonFromOMDB) { //this function puts up the movie titl
   $("#movie-title").append(movieTitle, intro);
    // change height of main content container to grow
    $(".main-content").css("height","auto");
+  //  add and remove class in instructions
+   $(".step-two").addClass("show");
+   $(".step-one").removeClass("show");
   //display actors
   var actors = jsonFromOMDB.Actors.split(', ');
   for (var i = 0; i < actors.length; i++) {
@@ -67,6 +69,8 @@ function clearPreviousSearch() { //this function clears the search box, and clea
 
 function populateGifs(jsonFromGiphy) { //this function puts up gifs
   $('#gif-display-area').empty(); //first empty the current gifs on display
+  $(".step-three").addClass("show");
+  $(".step-two").removeClass("show");
   for (var i of jsonFromGiphy.data) {
     var gifUrl = i.images.fixed_height.webp; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
     var gifDiv = $('<div>');
