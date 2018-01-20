@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Animating Hollywood</title>
+  <title>Animating Hollywood: Your Favorites</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- jQuery first -->
   <script defer src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -22,13 +22,10 @@
     <div class="primary-nav">
       <div class="row container">
         <div class="col-lg-6 col-md-12 col-sm-12 search">
-            <form class="form-inline">
-              <input id="movie-input" class="form-control" placeholder="movie name">
-              <button class="btn btn-primary" type="submit" id="find-movie">search</button><!-- type="submit" isn't mandatory, but it'll enable submit on hitting enter, the downside is .preventDefault is required-->
-          </form>
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12 nav">
           <ul class="nav-links">
+            <li class="nav-item"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="local-favorites.html">Local Favorites</a></li>
             <li class="nav-item"><a href="global-favorites.html">Global Favorites</a></li>
             <li class="nav-item"><a href="team.html">Team</a></li>
@@ -39,27 +36,26 @@
 
     </div>
   </header>
-  <section class="container main-content">
+  <section class="container main-content child-content">
     <section class="title row">
       <h1>Animating HollyWood</h1>
     </section>
     <section class="description row">
-      <p>Search for your favorite movie, choose an actor, get a gif, store your favorites.</p>
-      <!-- <ul class="instructions-list">
+      <ul class="instructions-list">
         <li class="list-items">Search for your favorite movie</li>
         <li class="list-items">Choose an actor</li>
         <li class="list-items">Get a GIF</li>
         <li class="list-items">Store your favorites</li>
         <li class="list-items">view other community favorites</li>
-      </ul> -->
+      </ul>
     </section>
     <section class="display-content">
       <div class="display-title row">
-        <h2>Team Canary Productions Presents:</h2>
+        <h2>Team Canary Prodoctions Presents:</h2>
       </div>
       <div class="dispay-movie-title row">
           <div id="movie-title">
-
+            <div id="all-stars"><h3>Your Favorite GIF's</h3></div>
           </div>
       </div>
       <div class="display-actor-buttons row">
