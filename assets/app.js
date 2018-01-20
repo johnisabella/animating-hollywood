@@ -37,6 +37,8 @@ function displayActorList(jsonFromOMDB) { //this function puts up the movie titl
   var intro = $("<h3>Starring:</h3>");
   var movieTitle = `<h2>${jsonFromOMDB.Title}, ${jsonFromOMDB.Year}</h2>`;
   $("#movie-title").append(movieTitle, intro);
+   // change height of main content container to grow
+   $(".main-content").css("height","auto");
   //display actors
   var actors = jsonFromOMDB.Actors.split(', ');
   for (var i = 0; i < actors.length; i++) {
