@@ -7,7 +7,7 @@ var giphyDisplayCount = 9;
 //logic:
 $("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
 $('#actors-view').on('click', '.btn', giphyCall); //make the giphy call when user clicks an actor name
-
+$('#gif-display-area').on('click', '.heart', toggleFavorite); //toggle favorite on and off when user clicks the heart
 /*
 no functions above↑
 nothing but functions below↓
@@ -70,5 +70,14 @@ function populateGifs(jsonFromGiphy) { //this function puts up gifs
     gifDiv.append(`<img src=${gifUrl}>`);
     gifDiv.append(`<span data-url=${gifUrl} class="heart">❤</span>`); //attach a heart with every img
     $('#gif-display-area').append(gifDiv);
+  }
+}
+
+function toggleFavorite() {
+  $(this).toggleClass('favorite');
+  if ($(this).hasClass('favorite')) {
+    console.log('on');
+  } else {
+    console.log('off');
   }
 }
