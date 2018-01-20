@@ -73,7 +73,11 @@ function populateGifs(jsonFromGiphy) { //this function puts up gifs
     var gifUrl = i.images.fixed_height.webp; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
     var gifDiv = $('<div>');
     gifDiv.append(`<img src=${gifUrl}>`);
-    gifDiv.append(`<span data-url=${gifUrl} class="heart">❤</span>`); //attach a heart with every img
+    var heart = $('<span>').append('❤').attr({'data-url': gifUrl, 'class': 'heart'});
+    if (isFavorite(url)) {}
+
+    gifDiv.append(heart);
+    // gifDiv.append(`<span data-url=${gifUrl} class="heart">❤</span>`); //attach a heart with every img
     $('#gif-display-area').append(gifDiv);
   }
 }
