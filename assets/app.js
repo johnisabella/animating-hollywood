@@ -62,6 +62,7 @@ function clearPreviousSearch() { //this function clears the search box, and clea
   $("#movie-input").empty();
   $('#movie-title').empty();
   $('#actors-view').empty();
+  $('#gif-display-area').empty(); //first empty the current gifs on display
 }
 
 function populateGifs(jsonFromGiphy) { //this function puts up gifs
