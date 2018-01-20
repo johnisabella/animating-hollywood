@@ -17,7 +17,7 @@ function omdbCall(event) {
   event.preventDefault();
   clearPreviousSearch(); //clear search box, clear movie title and actor list from previous search
   var movie = $("#movie-input").val().trim(); //grab user input from search box
-  var queryURL = `https://www.omdbapi.com/?apikey=${omdbApiKey}&t=${movie}&rating=giphyRating`;
+  var queryURL = `https://www.omdbapi.com/?apikey=${omdbApiKey}&t=${movie}`;
   $.ajax(queryURL).done(function(response) {
     displayActorList(response); //show new movie title and actor list
   });
@@ -26,7 +26,7 @@ function omdbCall(event) {
 function giphyCall() {
   // get data value for actors name
   var actorName = $(this).data("name");
-  var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + actorName + " " + movieTitle + "&api_key=" + giphyApiKey + "&limit=" + giphyDisplayCount;
+  var giphyQueryURL = `https://api.giphy.com/v1/gifs/search?q=${actorName} ${movieTitle}&api_key=${giphyApiKey}&limit=${giphyDisplayCount}&rating=${giphyRating}`;
   console.log(giphyQueryURL);
   $.ajax(giphyQueryURL).done(function(response) {
     populateGifs(response);
@@ -67,15 +67,16 @@ function clearPreviousSearch() { //this function clears the search box, and clea
   $("#movie-input").empty();
   $('#movie-title').empty();
   $('#actors-view').empty();
-  $('#gif-display-area').empty(); //first empty the current gifs on display
+  $('#gif-display-area').empty();
 }
 
 function populateGifs(jsonFromGiphy) { //this function puts up gifs
   $('#gif-display-area').empty(); //first empty the current gifs on display
+  //  add and remove class in instructions
   $(".step-three").addClass("show");
   $(".step-two").removeClass("show");
   for (var i of jsonFromGiphy.data) {
-    var gifUrl = i.images.fixed_height.webp; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
+    var gifUrl = i.images.fixed_height.url; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
     var gifDiv = $('<div>');  //this div contains one gif and one heart
     gifDiv.append(`<img src=${gifUrl}>`);
     // construct the heart, it'll be something like <span class="heart favorite" data-url="xxxxx">❤</span>
