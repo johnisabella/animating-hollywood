@@ -3,7 +3,7 @@ var omdbApiKey = 'ebd97e72';
 var giphyApiKey = 'dc6zaTOxFJmzC';
 var giphyRating = 'g';
 var giphyDisplayCount = 9;
-var movieValue = "";
+var movieTitle = "";
 
 //logic:
 $("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
@@ -26,8 +26,8 @@ function omdbCall(event) {
 
 function giphyCall() {
   // get data value for actors name
-  var actorValue = $(this).data("name");
-  var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + actorValue + " " + movieValue + "&api_key=" + giphyApiKey + "&limit=" + giphyDisplayCount;
+  var actorName = $(this).data("name");
+  var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + actorName + " " + movieTitle + "&api_key=" + giphyApiKey + "&limit=" + giphyDisplayCount;
   $.ajax(giphyQueryURL).done(function(response) {
     populateGifs(response);
   });
@@ -35,11 +35,13 @@ function giphyCall() {
 
 function displayActorList(jsonFromOMDB) { //this function puts up the movie title and actor list
   //display movie title and movie year
-  var intro = $("<h3>Starring:</h3>");
-  var movieTitle = `<h2>${jsonFromOMDB.Title}, ${jsonFromOMDB.Year}</h2>`;
-  movieValue = jsonFromOMDB.Title
-  $("#movie-title").append(movieTitle, intro);
-   // change height of main content container to grow
+  movieTitle = jsonFromOMDB.Title;
+  var movie = `<h2>${movieTitle}, ${jsonFromOMDB.Year}</h2>`;
+  $("#movie-title").append(movie);
+  //display starring:
+  var starring = $("<h3>Starring:</h3>");
+  $("#movie-title").append(starring);
+  // change height of main content container to grow
    $(".main-content").css("height","auto");
   //display actors
   var actors = jsonFromOMDB.Actors.split(', ');
