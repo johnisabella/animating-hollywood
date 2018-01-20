@@ -7,7 +7,7 @@ var giphyDisplayCount = 9;
 //logic:
 $("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
 $('#actors-view').on('click', '.btn', giphyCall); //make the giphy call when user clicks an actor name
-
+$('#gif-display-area').on('click', '.heart', toggleFavorite); //toggle favorite on and off when user clicks the heart
 /*
 no functions above↑
 nothing but functions below↓
@@ -66,7 +66,32 @@ function populateGifs(jsonFromGiphy) { //this function puts up gifs
   $('#gif-display-area').empty(); //first empty the current gifs on display
   for (var i of jsonFromGiphy.data) {
     var gifUrl = i.images.fixed_height.webp; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
-    var imgDiv = `<img src=${gifUrl}>`;
-    $('#gif-display-area').append(imgDiv);
+    var gifDiv = $('<div>');
+    gifDiv.append(`<img src=${gifUrl}>`);
+    gifDiv.append(`<span data-url=${gifUrl} class="heart">❤</span>`); //attach a heart with every img
+    $('#gif-display-area').append(gifDiv);
+  }
+}
+
+function toggleFavorite() {
+  $(this).toggleClass('favorite');
+  if ($(this).hasClass('favorite')) {
+    addToLocalStorage($(this).attr('data-url'));
+  } else {
+    removeFromLocalStorage($(this).attr('data-url'));
+  }
+}
+
+function addToLocalStorage(url) {
+  var keyName = url.slice(35,40); //slice a small part of the file name to be the key name
+  localStorage.setItem(keyName, url);
+}
+
+function removeFromLocalStorage(url) {
+  for (var i = 0; i<localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (localStorage[key] == url) {
+      localStorage.removeItem(key);
+    }
   }
 }
