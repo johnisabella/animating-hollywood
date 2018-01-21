@@ -2,7 +2,7 @@
 var omdbApiKey = 'ebd97e72';
 var giphyApiKey = 'dc6zaTOxFJmzC';
 var giphyRating = 'g';
-var giphyDisplayCount = 9;
+var giphyDisplayCount = 12;
 var movieTitle = "";
 
 //logic:
