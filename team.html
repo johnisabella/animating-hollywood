@@ -11,7 +11,7 @@
   <script defer src="assets/app.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
   <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito|PT+Sans+Narrow" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="shortcut icon" type="image/png" href="assets/Favicon.png">
@@ -24,10 +24,12 @@
       <div class="primary-nav">
         <div class="row container">
           <div class="col-lg-6 col-md-12 col-sm-12 search">
+              <ul class="nav-links">
+                  <li class="nav-item uppercase"><a href="index.html">Home</a></li>
+              </ul>
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12 nav">
             <ul class="nav-links">
-              <li class="nav-item"><a href="index.html">Home</a></li>
               <li class="nav-item"><a href="local-favorites.html">Local Favorites</a></li>
               <li class="nav-item"><a href="global-favorites.html">Global Favorites</a></li>
               <li class="nav-item"><a href="team.html">Team</a></li>
@@ -40,52 +42,42 @@
     </header>
     <section class="container main-content child-content">
       <section class="title row">
+        <h2>Team Canary Productions Presents:</h2>
         <h1>Animating HollyWood</h1>
       </section>
       <section class="description row">
         <p>Search for a movie, choose an actor, get a gif, store your favorites.</p>
       </section>
       <section class="display-content">
-        <div class="display-title row">
-          <h2>Team Canary Prodoctions Presents:</h2>
-        </div>
         <div class="dispay-movie-title row">
             <div id="movie-title">
-              <div id="all-stars"><h3>The All-Star Team</h3></div>
+              <div class="all-stars"><h3>The All-Star Team</h3></div>
             </div>
         </div>
-
           <div id="actors-view">
-            <div id="all-stars">
+            <div class="all-stars">
               <div class="team-pics row">
-
-                <div id="all-stars-container">
+                <div class="all-stars-container">
                 <embed src="https://media.giphy.com/media/l0HUnhRcpHuzUIP60/giphy.gif" width="250px" height="250px"></embed>
-                <div id="all-stars-text">Henry</div></div>
+                <div class="all-stars-text">Henry</div></div>
 
-                <div id="all-stars-container">
+                <div class="all-stars-container">
                 <embed src="https://media.giphy.com/media/xULW8Llv6zsBpPhwYM/giphy.gif" width="250px" height="250px"></embed>
-                <div id="all-stars-text">Zhi</div></div>
-              </div>
+                <div class="all-stars-text">Zhi</div></div>
+              <!-- </div> -->
 
-                <div class="team-pics row">
-                <div id="all-stars-container">
+              <!-- <div class="team-pics row"> -->
+                <div class="all-stars-container">
                 <embed src="https://media.giphy.com/media/3ohc12aDLC2YuA2JEI/giphy.gif" width="250px" height="250px"></embed>
-                <div id="all-stars-text">John</div></div>
+                <div class="all-stars-text">John</div></div>
 
-                <div id="all-stars-container">
+                <div class="all-stars-container">
                 <embed src="https://media.giphy.com/media/3oFzmqaqhpaZLomH0A/giphy.gif" width="250px" height="250px"></embed>
-                <div id="all-stars-text">Chris</div></div>
+                <div class="all-stars-text">Chris</div></div>
               </div>
 
               </div>
             </div>
-
-        <!-- <div class="display-gifs row">
-          <div id="gif-display-area">
-
-          </div>
-        </div> -->
       </section>
 
         </div>
@@ -97,7 +89,7 @@
     <!-- Footer content -->
     <div id="footer">
       <footer>
-        <p>Authors: Henry Mesias, Zhi Yin, John Isabella and Chris Chlumsky</p>
+          <p>© <a href="team.html">Team Canaray 2018</a></p>
       </footer>
   </div>
   </body>

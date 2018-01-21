@@ -94,6 +94,10 @@
     padding:5px 0;
     font-size: 18px;
   }
+  
+/* Title Instruction highlight
+  **************************************
+  */
   .step-one {
     transition: all .3s;
   }
@@ -101,19 +105,8 @@
   .step-one.show, .step-two.show, .step-three.show, .step-four.show {
     background-color:gold;
     padding:10px;
+    animation: back 5s linear;
   }
-
-  .step-one.show {
-    background-color:gold;
-    padding:10px;
-  }
-/* Title Instruction highlight
-  **************************************
-  */
-  .step.show {
-
-  }
-
 
 /* displayed content styles
   **************************************
@@ -122,6 +115,7 @@
   #movie-title {
     margin:0 auto;
     text-align: center;
+    padding:20px 0;
   }
 
   #movie-title h2 {
@@ -131,12 +125,34 @@
   #actors-view {
     margin:0 auto;
     display:flex;
-    flex-flow:row;
+    flex-flow:column;
     flex-wrap: wrap;
   }
 
   #actors-view .btn-info {
     margin:10px;
+    font-size:20px;
+  }
+
+  .btn-info:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .show>.btn-info.dropdown-toggle {
+    color:black;
+    background-color: transparent;
+    border-color: none;
+}
+
+  .btn-info {
+    color: black;
+    background-color: transparent;
+    border-color:none;
+    border:none;
+    text-decoration: underline;
+}
+
+  .btn-info:hover {
+    color: black;
+    background-color: transparent;
+    border:none;
+    text-decoration:line-through;
   }
 
   .display-content h2 {
@@ -166,10 +182,27 @@
     transform: translate(0,-50%);
   }
 
+  .uppercase {
+    text-transform: uppercase;
+  }
 
   footer {
-    padding-bottom:1px;
+    /* padding-bottom:1px; */
     background-color:#36454f;
+    text-align: center;
+  }
+  footer p {
+    margin:0;
+    padding:0;
+  }
+
+  footer a {
+    color:ghostwhite;
+  }
+
+  footer a:hover {
+    color:gold;
+    text-decoration:none;
   }
 
 /*Styling for team page */
@@ -178,23 +211,23 @@
     height: auto;
   }
 
-  #all-stars-pics {
+  .all-stars-pics {
     padding-top: 0;
   }
 
-  #all-stars img {
-    height: 250px;
-    width: 250px;
+  .all-stars img {
+    height:auto;
+    width: 100%;
     display: block;
   }
 
-  #all-stars-container {
+  .all-stars-container {
     position: relative;
     float: left;
     margin: 10px;
     }
 
-  #all-stars-text {
+  .all-stars-text {
     position: absolute;
     background-color: gold;
     font-family: 'Nunito', sans-serif;
@@ -211,7 +244,7 @@
 
 .team-pics {
   height:auto;
-  width:100%;
+  /* width:100%; */
   display: flex;
   align-items: center;
   justify-content: center;
