@@ -1,25 +1,29 @@
 //settings:
 var omdbApiKey = 'ebd97e72';
 var giphyApiKey = 'dc6zaTOxFJmzC';
-var giphyRating = 'g';
-var giphyDisplayCount = 12;
+var giphyRating = 'g'; //what rating gifs do you want to see
+var giphyDisplayCount = 12; //how many gifs are shown each time
 var movieTitle = "";
-//logic:
+
+//initialize:
+initializeFirebase();
 $("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
 $('#actors-view').on('click', '.btn', giphyCall); //make the giphy call when user clicks an actor name
 $('#gif-display-area').on('click', '.heart', toggleFavorite); //toggle favorite on and off when user clicks the heart
 if (location.pathname.includes('local')) { //if this is the local fav page, show local favs
-  showLocalFavs()
+  showLocalFavs();
 } else if (location.pathname.includes('global')) { //if this is the global fav page, show global favs
-  showGlobalFavs()
+  showGlobalFavs();
 }
+
 /*
 no functions above↑
 nothing but functions below↓
 */
+
 function omdbCall(event) {
   event.preventDefault();
-  clearPreviousSearch(); //clear search box, clear movie title and actor list from previous search
+  clearPreviousSearch(); //clear search box, movie title, actor list, and gif's from last search
   var movie = $("#movie-input").val().trim(); //grab user input from search box
   var queryURL = `https://www.omdbapi.com/?apikey=${omdbApiKey}&t=${movie}`;
   $.ajax(queryURL).done(function(response) {
@@ -52,7 +56,7 @@ function displayActorList(jsonFromOMDB) { //this function puts up the movie titl
   //display actors
   var actors = jsonFromOMDB.Actors.split(', ');
   for (var i = 0; i < actors.length; i++) {
-    // Then dynamicaly generating buttons for each actor in the array.
+    // Then dynamically generating buttons for each actor in the array.
     var a = $("<p>");
     // Adding a class
     a.addClass("btn btn-info");
@@ -66,19 +70,19 @@ function displayActorList(jsonFromOMDB) { //this function puts up the movie titl
   }
 }
 
-function clearPreviousSearch() { //this function clears the search box, and clears movie title and actor list from previous search
+function clearPreviousSearch() { //this function clears the search box, movie title, actor list, and gif's from previous search
   $("#movie-input").empty();
   $('#movie-title').empty();
   $('#actors-view').empty();
   $('#gif-display-area').empty();
 }
 
-function populateGifs(jsonFromGiphy) { //this function puts up gifs
-  $('#gif-display-area').empty(); //first empty the current gifs on display
+function populateGifs(jsonFromGiphy) { //this function puts up gifs from giphy search
+  $('#gif-display-area').empty(); //first empty the gifs from last clicked actor, if any
   //  add and remove class in instructions
   $(".step-three").addClass("show");
   $(".step-two").removeClass("show");
-  //loop through the giphy return, and append each gif
+  //loop through the giphy response, and append each gif
   for (var i of jsonFromGiphy.data) {
     var gifUrl = i.images.fixed_height.url;
     $('#gif-display-area').append(constructGifDiv(gifUrl));
@@ -101,7 +105,7 @@ function constructGifDiv(gifUrl) { //this function turns a url into a div, somet
   return gifDiv;
 }
 
-function isFavorite(url) { //this function checks whether a url is already stored in lockStorage
+function isFavorite(url) { //this function checks whether a url is already stored as favorite in localStorage
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
     if (localStorage[key] == url) {
@@ -111,21 +115,24 @@ function isFavorite(url) { //this function checks whether a url is already store
   return false;
 }
 
-function toggleFavorite() {
+function toggleFavorite() { //this function toggles the heart between white and red, and updates local and global favorites accordingly
   $(this).toggleClass('favorite');
+  gifUrl = $(this).attr('data-url');
   if ($(this).hasClass('favorite')) {
-    addToLocalStorage($(this).attr('data-url'));
+    addToBothStorage(gifUrl); //store the url into both local and global favorite
   } else {
-    removeFromLocalStorage($(this).attr('data-url'));
+    removeFromLocalStorage(gifUrl); //remove from local favorite
+    //doesn't remove from firebase, because 1. you shouldn't be able to remove other's favorites 2. let's makes the global favorite more prosperous
   }
 }
 
-function addToLocalStorage(url) {
+function addToBothStorage(url) { //this function stores a key and value pair to both localStorage and firebase
   var keyName = url.slice(35, 40); //slice a small part of the file name to be the key name
   localStorage.setItem(keyName, url);
+  firebase.database().ref('globalFavorites').child(keyName).set(url);
 }
 
-function removeFromLocalStorage(url) {
+function removeFromLocalStorage(url) { //this function removes a url from localStorage, if it existed
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
     if (localStorage[key] == url) {
@@ -144,6 +151,24 @@ function showLocalFavs() { //this function puts up all gifs stored in localStora
   }
 }
 
-function showGlobalFavs() {
-  // body...
+function showGlobalFavs() { //this function puts up all gifs stored in firebase
+  firebase.database().ref('globalFavorites').once('value', function(snapshot) {
+    for (i in snapshot.val()) { //loop through firebase and append each one
+      $('#gif-display-area').append(constructGifDiv(snapshot.val()[i]));
+    }
+  });
+}
+
+function initializeFirebase() {
+  var apiKey1stHalf = 'AIzaSyDYUWm29Yot3k';
+  var apiKey2ndHalf = 'qEtrpjDY0w8n-NahSBKTU';
+  var config = {
+    apiKey: apiKey1stHalf + apiKey2ndHalf,
+    authDomain: "animating-hollywood.firebaseapp.com",
+    databaseURL: "https://animating-hollywood.firebaseio.com",
+    projectId: "animating-hollywood",
+    storageBucket: "",
+    messagingSenderId: "309990232914"
+  };
+  firebase.initializeApp(config);
 }
