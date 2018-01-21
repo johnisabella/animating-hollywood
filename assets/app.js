@@ -51,8 +51,9 @@ function displayActorList(jsonFromOMDB) { //this function puts up the movie titl
   // change height of main content container to grow
   $(".main-content").css("height", "auto");
   //  add and remove class in instructions
-  $(".step-two").addClass("show");
-  $(".step-one").removeClass("show");
+   $(".step-two").addClass("show");
+   $(".step-one").removeClass("show");
+   $(".step-three").removeClass("show");
   //display actors
   var actors = jsonFromOMDB.Actors.split(', ');
   for (var i = 0; i < actors.length; i++) {
