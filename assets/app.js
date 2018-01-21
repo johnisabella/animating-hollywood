@@ -46,6 +46,7 @@ function displayActorList(jsonFromOMDB) { //this function puts up the movie titl
   //  add and remove class in instructions
    $(".step-two").addClass("show");
    $(".step-one").removeClass("show");
+   $(".step-three").removeClass("show");
   //display actors
   var actors = jsonFromOMDB.Actors.split(', ');
   for (var i = 0; i < actors.length; i++) {
