@@ -4,7 +4,6 @@ var giphyApiKey = 'dc6zaTOxFJmzC';
 var giphyRating = 'g'; //what rating gifs do you want to see
 var giphyDisplayCount = 12; //how many gifs are shown each time
 var movieTitle = "";
-
 //initialize:
 initializeFirebase();
 $("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
@@ -15,12 +14,10 @@ if (location.pathname.includes('local')) { //if this is the local fav page, show
 } else if (location.pathname.includes('global')) { //if this is the global fav page, show global favs
   showGlobalFavs();
 }
-
 /*
 no functions above↑
 nothing but functions below↓
 */
-
 function omdbCall(event) {
   event.preventDefault();
   clearPreviousSearch(); //clear search box, movie title, actor list, and gif's from last search
@@ -51,9 +48,9 @@ function displayActorList(jsonFromOMDB) { //this function puts up the movie titl
   // change height of main content container to grow
   $(".main-content").css("height", "auto");
   //  add and remove class in instructions
-   $(".step-two").addClass("show");
-   $(".step-one").removeClass("show");
-   $(".step-three").removeClass("show");
+  $(".step-two").addClass("show");
+  $(".step-one").removeClass("show");
+  $(".step-three").removeClass("show");
   //display actors
   var actors = jsonFromOMDB.Actors.split(', ');
   for (var i = 0; i < actors.length; i++) {
@@ -157,7 +154,9 @@ function showGlobalFavs() { //this function puts up all gifs stored in firebase
     for (i in snapshot.val()) { //loop through firebase and append each one
       $('#gif-display-area').append(constructGifDiv(snapshot.val()[i]));
     }
+    $('.heart').addClass('global-favorite'); // this class will make the heart yellow, but red will overwrite yellow is css
   });
+  console.log('did it?')
 }
 
 function initializeFirebase() {
