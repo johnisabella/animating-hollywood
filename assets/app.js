@@ -2,8 +2,8 @@
 var omdbApiKey = 'ebd97e72';
 var giphyApiKey = 'dc6zaTOxFJmzC';
 var giphyRating = 'g';
-var giphyDisplayCount = 9;
-var movieValue = "";
+var giphyDisplayCount = 12;
+var movieTitle = "";
 
 //logic:
 $("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
@@ -17,7 +17,7 @@ function omdbCall(event) {
   event.preventDefault();
   clearPreviousSearch(); //clear search box, clear movie title and actor list from previous search
   var movie = $("#movie-input").val().trim(); //grab user input from search box
-  var queryURL = `https://www.omdbapi.com/?apikey=${omdbApiKey}&t=${movie}&rating=giphyRating`;
+  var queryURL = `https://www.omdbapi.com/?apikey=${omdbApiKey}&t=${movie}`;
   $.ajax(queryURL).done(function(response) {
     displayActorList(response); //show new movie title and actor list
   });
@@ -25,8 +25,9 @@ function omdbCall(event) {
 
 function giphyCall() {
   // get data value for actors name
-  var actorValue = $(this).data("name");
-  var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?q=" + actorValue + " " + movieValue + "&api_key=" + giphyApiKey + "&limit=" + giphyDisplayCount;
+  var actorName = $(this).data("name");
+  var giphyQueryURL = `https://api.giphy.com/v1/gifs/search?q=${actorName} ${movieTitle}&api_key=${giphyApiKey}&limit=${giphyDisplayCount}&rating=${giphyRating}`;
+  console.log(giphyQueryURL);
   $.ajax(giphyQueryURL).done(function(response) {
     populateGifs(response);
   });
@@ -34,11 +35,13 @@ function giphyCall() {
 
 function displayActorList(jsonFromOMDB) { //this function puts up the movie title and actor list
   //display movie title and movie year
-  var intro = $("<h3>Starring:</h3>");
-  var movieTitle = `<h2>${jsonFromOMDB.Title}, ${jsonFromOMDB.Year}</h2>`;
-  movieValue = jsonFromOMDB.Title
-  $("#movie-title").append(movieTitle, intro);
-   // change height of main content container to grow
+  movieTitle = jsonFromOMDB.Title;
+  var movie = `<h2>${movieTitle}, ${jsonFromOMDB.Year}</h2>`;
+  $("#movie-title").append(movie);
+  //display starring:
+  var starring = $("<h3>Starring:</h3>");
+  $("#movie-title").append(starring);
+  // change height of main content container to grow
    $(".main-content").css("height","auto");
   //  add and remove class in instructions
    $(".step-two").addClass("show");
@@ -64,22 +67,38 @@ function clearPreviousSearch() { //this function clears the search box, and clea
   $("#movie-input").empty();
   $('#movie-title').empty();
   $('#actors-view').empty();
-  $('#gif-display-area').empty(); //first empty the current gifs on display
+  $('#gif-display-area').empty();
 }
 
 function populateGifs(jsonFromGiphy) { //this function puts up gifs
   $('#gif-display-area').empty(); //first empty the current gifs on display
+  //  add and remove class in instructions
   $(".step-three").addClass("show");
   $(".step-two").removeClass("show");
   for (var i of jsonFromGiphy.data) {
-    var gifUrl = i.images.fixed_height.webp; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
-    var gifDiv = $('<div>');
+    var gifUrl = i.images.fixed_height.url; //I chose webp because it's smaller. If gif is preferred, replace .webp with .url
+    var gifDiv = $('<div>');  //this div contains one gif and one heart
     gifDiv.append(`<img src=${gifUrl}>`);
-    gifDiv.append(`<span data-url=${gifUrl} class="heart">❤</span>`); //attach a heart with every img
+    // construct the heart, it'll be something like <span class="heart favorite" data-url="xxxxx">❤</span>
+    var heart = $('<span>').append('❤').attr({'class': 'heart', 'data-url': gifUrl});
+    //check if it's already a favorite, if yes make it red
+    if (isFavorite(gifUrl)) {
+      heart.toggleClass('favorite', true);
+    }
+    gifDiv.append(heart);
     $('#gif-display-area').append(gifDiv);
   }
 }
 
+function isFavorite(url) { //this function checks whether a url is already stored in lockStorage
+    for (var i = 0; i<localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (localStorage[key] == url) {
+        return true;
+      }
+    }
+    return false;
+  }
 function toggleFavorite() {
   $(this).toggleClass('favorite');
   if ($(this).hasClass('favorite')) {
