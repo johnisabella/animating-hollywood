@@ -82,13 +82,16 @@ function populateGifs(jsonFromGiphy) { //this function puts up gifs
     gifDiv.append(`<img src=${gifUrl}>`);
     // construct the heart, it'll be something like <span class="heart favorite" data-url="xxxxx">❤</span>
     var heart = $('<span>').append('❤').attr({'class': 'heart', 'data-url': gifUrl});
-    //check if it's already a favorite, if yes make it red
+    //construct the copy/paste image
+    var clip = $('<span>').append('✀').attr({'class': 'clip', 'data-url': gifUrl, 'id': 'copy-button', 'data-clipboard-target': gifUrl});
+        //check if it's already a favorite, if yes make it red
     if (isFavorite(gifUrl)) {
       heart.toggleClass('favorite', true);
     }
     gifDiv.append(heart);
+    gifDiv.append(clip);
     $('#gif-display-area').append(gifDiv);
-  }
+      }
 }
 
 function isFavorite(url) { //this function checks whether a url is already stored in lockStorage
@@ -113,6 +116,13 @@ function addToLocalStorage(url) {
   var keyName = url.slice(35,40); //slice a small part of the file name to be the key name
   localStorage.setItem(keyName, url);
 }
+
+//copy paste function (using clipboard.js)
+// function copyToClipboard(){
+//   var GIFcopy = document.getElementById("copy-button");
+//   copyText.select();
+//
+// }
 
 function removeFromLocalStorage(url) {
   for (var i = 0; i<localStorage.length; i++) {

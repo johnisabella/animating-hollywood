@@ -94,14 +94,14 @@
     padding:5px 0;
     font-size: 18px;
   }
-  
+
 /* Title Instruction highlight
   **************************************
   */
   .step-one {
     transition: all .3s;
   }
-  
+
   .step-one.show, .step-two.show, .step-three.show, .step-four.show {
     background-color:gold;
     padding:10px;
@@ -271,4 +271,12 @@ div#all-stars {
 .heart.favorite {
   color: red;
 
+}
+
+.clip {
+  cursor: pointer;
+  color: white;
+  position: relative;
+    bottom: -86px;
+    right: 90px;
 }
