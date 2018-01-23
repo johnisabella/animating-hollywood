@@ -1,15 +1,14 @@
   body {
   font-family: 'PT Sans Narrow', sans-serif;
-  background-color:black;
+  background-color:#000!important;
   color:ghostwhite;
-  /* font-family: 'Nunito', sans-serif; */
   }
 
-  .site {
+  /* .site {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-  }
+  } */
 
   .site-content {
     flex: 1;
@@ -205,6 +204,13 @@
     text-decoration:none;
   }
 
+  .chairs {
+    height:100px;
+    background-image: url('images/theatre_seats.png');
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+
 /*Styling for team page */
 
   .main-content.child-content {
@@ -244,7 +250,6 @@
 
 .team-pics {
   height:auto;
-  /* width:100%; */
   display: flex;
   align-items: center;
   justify-content: center;
