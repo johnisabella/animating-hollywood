@@ -38,6 +38,12 @@ function giphyCall() {
 }
 
 function displayActorList(jsonFromOMDB) { //this function puts up the movie title and actor list
+  //display "No results" message for any user input not found in omdb
+  console.log(jsonFromOMDB);
+  var noResults = $("<h3>Your search returned no results. Please try again.<h3>")
+  if (jsonFromOMDB.Error == "Movie not found!") {
+    $("#movie-title").append(noResults);
+  } else {
   //display movie title and movie year
   movieTitle = jsonFromOMDB.Title;
   var movie = `<h2>${movieTitle}, ${jsonFromOMDB.Year}</h2>`;
@@ -65,6 +71,7 @@ function displayActorList(jsonFromOMDB) { //this function puts up the movie titl
     a.text(actors[i]);
     // Adding the button to the HTML
     $("#actors-view").append(a);
+    }
   }
 }
 
