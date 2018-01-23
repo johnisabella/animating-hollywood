@@ -1,14 +1,38 @@
+
+
+function copyText(text) {
+  var $input = $("<input>");
+  $("body").append($input);
+  $input.val(text).select();
+  document.execCommand("copy");
+  $input.remove();
+}
+
+function toClipboard(someText) {
+  var temp = document.createElement('input');
+  document.body.appendChild(temp);
+  temp.value = someText;
+  temp.select();
+  document.execCommand('copy');
+  document.body.removeChild(temp);
+  console.log('"' + someText + '" should have been copied to your clipboard');
+}
+
 //settings:
 var omdbApiKey = 'ebd97e72';
 var giphyApiKey = 'dc6zaTOxFJmzC';
 var giphyRating = 'g'; //what rating gifs do you want to see
 var giphyDisplayCount = 12; //how many gifs are shown each time
 var movieTitle = "";
+
 //initialize:
 initializeFirebase();
 $("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
 $('#actors-view').on('click', '.btn', giphyCall); //make the giphy call when user clicks an actor name
 $('#gif-display-area').on('click', '.heart', toggleFavorite); //toggle favorite on and off when user clicks the heart
+$('#gif-display-area').on('click', '.clip', function () {
+  toClipboard('Hello World');
+})
 if (location.pathname.includes('local')) { //if this is the local fav page, show local favs
   showLocalFavs();
 } else if (location.pathname.includes('global')) { //if this is the global fav page, show global favs
@@ -83,6 +107,7 @@ function clearPreviousSearch() { //this function clears the search box, movie ti
 }
 
 function populateGifs(jsonFromGiphy) { //this function puts up gifs from giphy search
+
   $('#gif-display-area').empty(); //first empty the gifs from last clicked actor, if any
   //  add and remove class in instructions
   $(".step-three").addClass("show");
@@ -184,3 +209,4 @@ function initializeFirebase() {
   };
   firebase.initializeApp(config);
 }
+
