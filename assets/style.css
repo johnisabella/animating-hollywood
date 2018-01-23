@@ -1,8 +1,7 @@
   body {
   font-family: 'PT Sans Narrow', sans-serif;
-  background-color:black;
+  background-color:#000;!important;
   color:ghostwhite;
-  /* font-family: 'Nunito', sans-serif; */
   }
 
   .site {
@@ -251,7 +250,6 @@
 
 .team-pics {
   height:auto;
-  /* width:100%; */
   display: flex;
   align-items: center;
   justify-content: center;
