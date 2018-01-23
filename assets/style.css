@@ -146,14 +146,13 @@
     border:none;
     text-decoration: underline;
     transition: all .3s;
-    /* transition-property: transform; */
 }
 
   .btn-info:hover {
     color: black;
     background-color: transparent;
     border:none;
-    /* text-decoration:line-through; */
+    text-decoration:underline;
     transform: scale(1.1);
   }
 
