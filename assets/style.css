@@ -205,6 +205,13 @@
     text-decoration:none;
   }
 
+  .chairs {
+    height:100px;
+    background-image: url('images/theatre_seats.png');
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+
 /*Styling for team page */
 
   .main-content.child-content {
