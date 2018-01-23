@@ -268,9 +268,13 @@ div#all-stars {
     right:30px;
 }
 
+.heart.global-favorite {
+  color: yellow;
+}
+
+
 .heart.favorite {
   color: red;
-
 }
 
 .clip {
