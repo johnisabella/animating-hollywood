@@ -93,7 +93,7 @@ function constructGifDiv(gifUrl) { //this function turns a url into a div, somet
   var gifDiv = $('<div>'); //create empty div, then append a gif, then append a heart
   gifDiv.append(`<img src=${gifUrl}>`);
   // construct the heart, something like <span class="heart favorite" data-url="xxxxx">❤</span>
-  var heart = $('<span>').append('❤').attr({
+  var heart = $('<span>').append('<i class="fa fa-heart" aria-hidden="true"></i>').attr({
     'class': 'heart',
     'data-url': gifUrl
   });
@@ -102,7 +102,7 @@ function constructGifDiv(gifUrl) { //this function turns a url into a div, somet
     heart.toggleClass('favorite', true);
   }
   gifDiv.append(heart);
-  var clip = $('<span>').append('✀').attr({'class': 'clip', 'data-url': gifUrl, 'id': 'copy-button', 'data-clipboard-target': gifUrl});
+  var clip = $('<span>').append('<i class="fa fa-clipboard" aria-hidden="true"></i>').attr({'class': 'clip', 'data-url': gifUrl, 'id': 'copy-button', 'data-clipboard-target': gifUrl});
   gifDiv.append(clip);
   return gifDiv;
 }
