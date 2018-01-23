@@ -1,12 +1,5 @@
 
 
-function copyText(text) {
-  var $input = $("<input>");
-  $("body").append($input);
-  $input.val(text).select();
-  document.execCommand("copy");
-  $input.remove();
-}
 
 function toClipboard(someText) {
   var temp = document.createElement('input');
@@ -134,7 +127,7 @@ function constructGifDiv(gifUrl) { //this function turns a url into a div, somet
     heart.toggleClass('favorite', true);
   }
   gifDiv.append(heart);
-  var clip = $('<span>').append('<i class="fa fa-clipboard" aria-hidden="true"></i>').attr({'class': 'clip', 'data-url': gifUrl, 'id': 'copy-button', 'data-clipboard-action': 'cut', 'data-clipboard-target': gifUrl});
+  var clip = $('<span>').append('<i class="fa fa-clipboard" aria-hidden="true"></i>').attr({'class': 'clip', 'data-url': gifUrl});
   gifDiv.append(clip);
   return gifDiv;
 
