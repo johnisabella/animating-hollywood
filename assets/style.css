@@ -2,6 +2,7 @@
   font-family: 'PT Sans Narrow', sans-serif;
   background-color:#000!important;
   color:ghostwhite;
+  max-width: 100%;
   }
 
   /* .site {
@@ -10,9 +11,9 @@
     flex-direction: column;
   } */
 
-  .site-content {
+  /* .site-content {
     flex: 1;
-  }
+  } */
 
   /* Header Styles
   **************************************
@@ -106,6 +107,8 @@
     padding:10px;
     animation: back 5s linear;
   }
+
+
 
 /* displayed content styles
   **************************************
@@ -209,6 +212,7 @@
   .chairs {
     height:100px;
     background-image: url('images/theatre_seats.png');
+    background-size:cover;
     background-repeat: no-repeat;
     overflow: hidden;
   }
@@ -291,3 +295,64 @@ div#all-stars {
     bottom: -86px;
     right: 90px;
 }
+
+li.nav-item.visibile-mobile {
+  display: none;
+}
+
+
+/*Media Queries
+  **************************************
+  */
+
+  @media (max-width:990px) {
+    .title {
+      text-align: center;
+    } 
+}
+  @media (max-width: 767px) {
+    .hidden-mobile {
+      display:none;
+    }
+    .form-inline {
+      justify-content: center;
+    }
+    .nav {
+      justify-content: center;
+  }
+    li.nav-item.visibile-mobile {
+      display: initial;
+  }
+  .title h1 {
+    font-size:2.5rem;
+  }
+  .description p {
+    text-align: center;
+  }
+  #gif-display-area {
+    justify-content: left;
+}
+}
+
+  @media (max-width: 576px) {
+
+    .site {
+    display: inline-flex;
+    min-height: 100vh;
+    flex-direction: column;
+  } 
+
+   .site-content {
+    flex: 1;
+  }
+      .nav {
+        justify-content:center;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+      ul.nav-links {
+        padding-left:0;
+      } 
+  
+  }
