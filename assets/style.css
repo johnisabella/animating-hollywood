@@ -293,7 +293,7 @@ div#all-stars {
   color: white;
   position: relative;
     bottom: -86px;
-    right: 90px;
+    right: 75px;
 }
 
 li.nav-item.visibile-mobile {
@@ -308,7 +308,7 @@ li.nav-item.visibile-mobile {
   @media (max-width:990px) {
     .title {
       text-align: center;
-    } 
+    }
 }
   @media (max-width: 767px) {
     .hidden-mobile {
@@ -340,7 +340,7 @@ li.nav-item.visibile-mobile {
     display: inline-flex;
     min-height: 100vh;
     flex-direction: column;
-  } 
+  }
 
    .site-content {
     flex: 1;
@@ -353,6 +353,6 @@ li.nav-item.visibile-mobile {
       }
       ul.nav-links {
         padding-left:0;
-      } 
-  
+      }
+
   }
