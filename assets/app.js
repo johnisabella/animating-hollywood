@@ -1,16 +1,3 @@
-
-
-
-function toClipboard(someText) {
-  var temp = document.createElement('input');
-  document.body.appendChild(temp);
-  temp.value = someText;
-  temp.select();
-  document.execCommand('copy');
-  document.body.removeChild(temp);
-  console.log('"' + someText + '" should have been copied to your clipboard');
-}
-
 //settings:
 var omdbApiKey = 'ebd97e72';
 var giphyApiKey = 'dc6zaTOxFJmzC';
@@ -23,9 +10,8 @@ initializeFirebase();
 $("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
 $('#actors-view').on('click', '.btn', giphyCall); //make the giphy call when user clicks an actor name
 $('#gif-display-area').on('click', '.heart', toggleFavorite); //toggle favorite on and off when user clicks the heart
-$('#gif-display-area').on('click', '.clip', function () {
-  toClipboard('Hello World');
-})
+$('#gif-display-area').on('click', '.clip', copyUrl); //copy the gif url to clipboard
+
 if (location.pathname.includes('local')) { //if this is the local fav page, show local favs
   showLocalFavs();
 } else if (location.pathname.includes('global')) { //if this is the global fav page, show global favs
@@ -56,7 +42,6 @@ function giphyCall() {
 
 function displayActorList(jsonFromOMDB) { //this function puts up the movie title and actor list
   //display "No results" message for any user input not found in omdb
-  console.log(jsonFromOMDB);
   var noResults = $("<h3>Your search returned no results. Please try again.<h3>")
   if (jsonFromOMDB.Error == "Movie not found!") {
     $("#movie-title").append(noResults);
@@ -100,7 +85,6 @@ function clearPreviousSearch() { //this function clears the search box, movie ti
 }
 
 function populateGifs(jsonFromGiphy) { //this function puts up gifs from giphy search
-
   $('#gif-display-area').empty(); //first empty the gifs from last clicked actor, if any
   //  add and remove class in instructions
   $(".step-three").addClass("show");
@@ -111,8 +95,6 @@ function populateGifs(jsonFromGiphy) { //this function puts up gifs from giphy s
     $('#gif-display-area').append(constructGifDiv(gifUrl));
   }
 }
-
-
 
 function constructGifDiv(gifUrl) { //this function turns a url into a div, something like <div><img src=url><span>❤</span></div>
   var gifDiv = $('<div>'); //create empty div, then append a gif, then append a heart
@@ -203,3 +185,12 @@ function initializeFirebase() {
   firebase.initializeApp(config);
 }
 
+function copyUrl() { //this function copies the gif url to clipboard
+  //it's an ugly workaround, because there's no built-in function that does this job
+  var temp = document.createElement('input');
+  document.body.appendChild(temp);
+  temp.value = $(this).attr('data-url');
+  temp.select();
+  document.execCommand('copy');
+  document.body.removeChild(temp);
+}
