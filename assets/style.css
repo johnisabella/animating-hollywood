@@ -276,3 +276,11 @@ div#all-stars {
 .heart.favorite {
   color: red;
 }
+
+.clip {
+  cursor: pointer;
+  color: white;
+  position: relative;
+    bottom: -86px;
+    right: 90px;
+}

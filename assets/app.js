@@ -87,6 +87,8 @@ function populateGifs(jsonFromGiphy) { //this function puts up gifs from giphy s
   }
 }
 
+
+
 function constructGifDiv(gifUrl) { //this function turns a url into a div, something like <div><img src=url><span>❤</span></div>
   var gifDiv = $('<div>'); //create empty div, then append a gif, then append a heart
   gifDiv.append(`<img src=${gifUrl}>`);
@@ -100,6 +102,8 @@ function constructGifDiv(gifUrl) { //this function turns a url into a div, somet
     heart.toggleClass('favorite', true);
   }
   gifDiv.append(heart);
+  var clip = $('<span>').append('✀').attr({'class': 'clip', 'data-url': gifUrl, 'id': 'copy-button', 'data-clipboard-target': gifUrl});
+  gifDiv.append(clip);
   return gifDiv;
 }
 
