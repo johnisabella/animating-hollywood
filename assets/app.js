@@ -4,11 +4,14 @@ var giphyApiKey = 'dc6zaTOxFJmzC';
 var giphyRating = 'g'; //what rating gifs do you want to see
 var giphyDisplayCount = 12; //how many gifs are shown each time
 var movieTitle = "";
+
 //initialize:
 initializeFirebase();
 $("#find-movie").on("click", omdbCall); //make the omdb call when user clicks "search"
 $('#actors-view').on('click', '.btn', giphyCall); //make the giphy call when user clicks an actor name
 $('#gif-display-area').on('click', '.heart', toggleFavorite); //toggle favorite on and off when user clicks the heart
+$('#gif-display-area').on('click', '.clip', copyUrl); //copy the gif url to clipboard
+
 if (location.pathname.includes('local')) { //if this is the local fav page, show local favs
   showLocalFavs();
 } else if (location.pathname.includes('global')) { //if this is the global fav page, show global favs
@@ -39,7 +42,6 @@ function giphyCall() {
 
 function displayActorList(jsonFromOMDB) { //this function puts up the movie title and actor list
   //display "No results" message for any user input not found in omdb
-  console.log(jsonFromOMDB);
   var noResults = $("<h3>Your search returned no results. Please try again.<h3>")
   if (jsonFromOMDB.Error == "Movie not found!") {
     $("#movie-title").append(noResults);
@@ -94,8 +96,6 @@ function populateGifs(jsonFromGiphy) { //this function puts up gifs from giphy s
   }
 }
 
-
-
 function constructGifDiv(gifUrl) { //this function turns a url into a div, something like <div><img src=url><span>❤</span></div>
   var gifDiv = $('<div>'); //create empty div, then append a gif, then append a heart
   gifDiv.append(`<img src=${gifUrl}>`);
@@ -109,7 +109,7 @@ function constructGifDiv(gifUrl) { //this function turns a url into a div, somet
     heart.toggleClass('favorite', true);
   }
   gifDiv.append(heart);
-  var clip = $('<span>').append('<i class="fa fa-clipboard" aria-hidden="true"></i>').attr({'class': 'clip', 'data-url': gifUrl, 'id': 'copy-button', 'data-clipboard-action': 'cut', 'data-clipboard-target': gifUrl});
+  var clip = $('<span>').append('<i class="fa fa-clipboard" aria-hidden="true"></i>').attr({'class': 'clip', 'data-url': gifUrl});
   gifDiv.append(clip);
   return gifDiv;
 
@@ -183,4 +183,14 @@ function initializeFirebase() {
     messagingSenderId: "309990232914"
   };
   firebase.initializeApp(config);
+}
+
+function copyUrl() { //this function copies the gif url to clipboard
+  //it's an ugly workaround, because there's no built-in function that does this job
+  var temp = document.createElement('input');
+  document.body.appendChild(temp);
+  temp.value = $(this).attr('data-url');
+  temp.select();
+  document.execCommand('copy');
+  document.body.removeChild(temp);
 }
