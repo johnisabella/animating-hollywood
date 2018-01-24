@@ -2,7 +2,7 @@
   font-family: 'PT Sans Narrow', sans-serif;
   background-color:#000!important;
   color:ghostwhite;
-  max-width: 100%;
+  /* max-width: 100%; */
   }
 
   /* .site {
@@ -55,12 +55,17 @@
     color:gold;;
     text-decoration: none;
   }
+  .nav-item.local-page a, .nav-item.global-page a, .nav-item.team-page a {
+    color:gold;
+  }
+
+  
 
   /* Main content Container Styles
   **************************************
   */
   .main-content {
-    background-color:whitesmoke;
+    background-color:#d8d4d4;
     color:black;
     padding:20px;
     margin-top:10px;
@@ -296,7 +301,7 @@ div#all-stars {
     right: 75px;
 }
 
-li.nav-item.visibile-mobile {
+li.nav-item.visible-mobile {
   display: none;
 }
 
@@ -320,7 +325,7 @@ li.nav-item.visibile-mobile {
     .nav {
       justify-content: center;
   }
-    li.nav-item.visibile-mobile {
+    li.nav-item.visible-mobile {
       display: initial;
   }
   .title h1 {
@@ -354,5 +359,19 @@ li.nav-item.visibile-mobile {
       ul.nav-links {
         padding-left:0;
       }
+
+  }
+
+  @media(max-width:375px) {
+    #gif-display-area img {
+      position: relative;
+      width: 75%;
+  }
+  .display-gifs {
+    text-align:center;
+  }
+  .heart, .clip {
+    bottom:-35%;
+  }
 
   }
