@@ -26,18 +26,14 @@ function omdbCall(event) {
   clearPreviousSearch(); //clear search box, movie title, actor list, and gif's from last search
   var movie = $("#movie-input").val().trim(); //grab user input from search box
   var queryURL = `https://www.omdbapi.com/?apikey=${omdbApiKey}&t=${movie}`;
-  $.ajax(queryURL).done(function(response) {
-    displayActorList(response); //show new movie title and actor list
-  });
+  $.ajax(queryURL).done(displayActorList); //show new movie title and actor list
 }
 
 function giphyCall() {
   // get data value for actors name
   var actorName = $(this).data("name");
   var giphyQueryURL = `https://api.giphy.com/v1/gifs/search?q=${actorName} ${movieTitle}&api_key=${giphyApiKey}&limit=${giphyDisplayCount}&rating=${giphyRating}`;
-  $.ajax(giphyQueryURL).done(function(response) {
-    populateGifs(response);
-  });
+  $.ajax(giphyQueryURL).done(populateGifs);
 }
 
 function displayActorList(jsonFromOMDB) { //this function puts up the movie title and actor list
@@ -115,7 +111,7 @@ function constructGifDiv(gifUrl) { //this function turns a url into a div, somet
 
 }
 
-function isFavorite(url) { //this function checks whether a url is already stored as favorite in localStorage
+function isFavorite(url) { //this function checks whether an url is already stored as favorite in localStorage
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
     if (localStorage[key] == url) {
