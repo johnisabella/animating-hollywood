@@ -238,6 +238,12 @@
     display: block;
   }
 
+  .all-stars-container.chris img {
+    width:418px;
+    height:480px;
+  }
+
+
   .all-stars-container {
     position: relative;
     float: left;
